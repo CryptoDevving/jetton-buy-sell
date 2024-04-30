@@ -83,7 +83,8 @@ async function trade() {
     const userJettonWalletContract = client.open(userJettonWallet);
 
     while (true) {
-        const buyParams = await buyStonfi(0.1, USER_ADDRESS); // buy WHISK with 0.1 TON
+        const amountToBuy = randomInRange(40, 60);
+        const buyParams = await buyStonfi(amountToBuy, USER_ADDRESS); // buy WHISK with amountToBuy TON
 
         let seqno = (await tonwebWallet.methods.seqno().call()) || 0;
         try {
