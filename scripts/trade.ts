@@ -13,6 +13,7 @@ const TONCENTER_API_KEY = <string>process.env.TONCENTER_API_KEY;
 const TONCENTER_API = 'https://toncenter.com/api/v2/jsonRPC';
 const WALLET_MNEMONIC = <string>process.env.WALLET_MNEMONIC;
 const WAIT_BEFORE_SELL = 1800000; // 30 minutes
+const WAIT_FOR_NEW_CIRCLE = 1800000; // 30 minutes
 
 const router = new DEX.v1.Router({
     tonApiClient: new TonWeb.HttpProvider(TONCENTER_API, { apiKey: TONCENTER_API_KEY }),
@@ -138,7 +139,7 @@ async function trade() {
             }).send();
         }
 
-        await sleep(60000 * 32); // wait 32 minutes
+        await sleep(WAIT_FOR_NEW_CIRCLE);
     }
 }
 
